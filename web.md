@@ -1,6 +1,6 @@
 # Web Interface Requirements
 
-Companion web view for the Autistic Android app. Data lives in Firestore and is
+Companion web view for the My Android app. Data lives in Firestore and is
 read/written through the same collections the Android app syncs with. Auth via
 Firebase (same account as the app).
 
@@ -9,7 +9,7 @@ Firebase (same account as the app).
 ## Tech Stack
 
 ### Core
-- **Vite + React + TypeScript** — client-side SPA (no SSR needed; everything behind Firebase Auth)
+- **React + TypeScript** — client-side SPA (no SSR needed; everything behind Firebase Auth)
 - **Firebase JS SDK v9** (modular) — Firestore + Auth; same collections as the Android app
 - **Tailwind CSS + shadcn/ui** — table, collapsible, dialog, form components
 - **Firebase Hosting** — deploy target; free tier sufficient for personal use
@@ -24,10 +24,20 @@ Firebase (same account as the app).
 
 ### Tooling
 - **ESLint + Prettier** — linting and formatting
-- **Vitest + React Testing Library** — unit and component tests
+- **Testing Library** — unit and component tests
 - **vite-plugin-pwa** — installable PWA (natural fit as a mobile companion)
 
 ---
+
+# Until I say otherwise, the following are out of scope.  Except for navigation.  That should always be included:
+* Tasks
+* Task templates
+* Mood
+* Vitals / Health
+* Notes
+* Food log
+* Scanned Products
+* Food Cache
 
 ## Access levels
 
@@ -67,7 +77,7 @@ Display all tasks with `completedAt IS NULL` for today.
 **Completed tasks:**
 - Separate collapsible section showing tasks completed today (`completedAt` is today's date)
 
-### 1.2 Daily task templates (read-only)
+### 1.2 Daily task templates (read/write)
 
 List all rows from `daily_tasks`, sorted alphabetically by title.
 
@@ -191,42 +201,106 @@ From the expanded day view:
 
 ## 5. Sequences (read/write)
 
-### 5.1 Sequence list
+The web app manages sequence **definitions** only — creating, editing, deleting sequences and their steps. The Android app handles execution (runs, timers, voice activation, set tracking). The web displays run history and active-run indicators as read-only data synced from Firestore.
+
+### 5.1 Step types
+
+Each step in a sequence has a **type** that determines its fields:
+
+#### 5.1.1 Exercise step
+
+For machine-based gym exercises.
+
+**Fields:**
+- `exerciseName` — name of the exercise
+- `equipmentName` — the machine used
+- `weight` — default weight (lb/kg)
+- `sets` — number of sets
+- `reps` — number of reps per set
+- `setUnit` — `"reps"` or `"seconds"`
+- `restAfterSetMinutes` — rest timer duration between sets
+- `defaults` — sub-object for default weight/sets/reps (set on creation)
+- `actuals` — sub-object for last-used actuals (written by Android, optionally propagated to defaults)
+
+#### 5.1.2 Stretch step
+
+For stretching exercises.
+
+**Fields:**
+- `stretchName`
+- `equipment` — e.g. mat, strap, foam roller
+- `sets` — number of sets
+- `durationSeconds` — hold duration per set
+- `restBetweenSetsSeconds` — rest between sets
+- `voiceActivation` — boolean (Android uses this to enable voice start)
+- `media` — attached reference image with scaling/positioning metadata
+
+#### 5.1.3 Timer step
+
+A generic countdown step.
+
+**Fields:**
+- `label` — what the timer is for
+- `durationMinutes`
+
+#### 5.1.4 Repeat group
+
+A container that holds sub-steps that repeat until the user marks them done. In the web UI, sub-steps are always visible inline and can be individually expanded to edit their fields or deleted.
+
+**Fields:**
+- `label`
+- `steps` — nested list of sub-steps (any type including another repeat group)
+
+#### 5.1.5 Action step
+
+A simple task or chore with a description and optional duration. No sets, reps, or equipment.
+
+**Fields:**
+- `label`
+- `durationMinutes` — optional expected duration
+- `instructions` — free-text task description
+
+### 5.2 Sequence list
 
 All sequences where `isDeleted = false`, sorted alphabetically by `name`.
 
 **Fields per row:**
 - Name
-- Step count (derived from `sequence_steps` count for that sequence)
-- Active run indicator — badge if there is a run with `completedAt IS NULL` for this sequence
+- Step count
+- Repeat mode badge — `🔁 until done` or `🔁 Nx` when `repeatMode !== 'once'`
+- Active run indicator — badge if a `sequence_runs` record has `completedAt IS NULL` for this sequence
 
-### 5.2 Sequence detail
+### 5.3 Sequence detail
 
-Clicking a sequence shows its ordered steps.
+Clicking a sequence shows its ordered steps with full step-type-specific fields. The sequence's repeat mode is shown as a badge next to the step count.
 
-**Fields per step:**
-- Position number
-- Instruction text
-- Estimated duration (`estimatedMinutes`) — shown if set
+For repeat group steps, each sub-step renders as its own interactive card with:
+- Expand/collapse toggle (click the row) to reveal `StepFieldsForm`
+- Delete button (**×**) to remove the sub-step
+- Changes save immediately to Firestore
 
-### 5.3 Create / edit sequence (write)
+### 5.4 Create / edit / delete sequence
 
-**Create sequence:**
+**Create:**
 - Name field
-- Add steps inline: instruction text, optional estimated minutes, drag-to-reorder
+- Repeat mode dropdown — `Once (no repeat)`, `🔁 Until done`, `🔁 Fixed count` (shows count input when selected)
+- Add steps inline by type (exercise / stretch / timer / repeat group / action)
+- Repeat group sub-steps added via individual type buttons (`+ ✅ Action`, `+ ⏱ Timer`, etc.) and are always visible with inline form fields
+- Drag-to-reorder steps
 
-**Edit sequence:**
+**Edit:**
 - Rename
-- Add, edit, delete, reorder steps
-- On save: `lastModifiedAt = now`, `pendingFirestoreSync = true` for the sequence and any changed steps
+- Change repeat mode
+- Add, edit, delete, reorder steps and sub-steps
+- On save: `lastModifiedAt = now`, `pendingFirestoreSync = true`
 
-**Delete sequence:**
-- Soft-delete: sets `isDeleted = true`, `lastModifiedAt = now`, `pendingFirestoreSync = true`
-- Cascades soft-delete to all steps of that sequence
+**Delete:**
+- Soft-delete: `isDeleted = true`, `lastModifiedAt = now`, `pendingFirestoreSync = true`
+- Cascades soft-delete to all steps
 
-### 5.4 Run history (read-only)
+### 5.5 Run history (read-only)
 
-For each sequence, a collapsible section showing past runs from `sequence_runs`.
+Collapsible section per sequence showing past runs from `sequence_runs`.
 
 **Fields per run:**
 - Started at (`startedAt`)
@@ -302,3 +376,60 @@ Clicking an entry shows all stored nutrition values:
 - The web does not trigger barcode scans or AI photo analysis — `products` and `food_cache` are populated by the Android app only.
 - Soft-deleted records (`isDeleted = true`) are never shown in the web UI.
 - Food log items older than 14 days are purged by the Android app's daily reset worker; the web should reflect whatever Firestore contains.
+
+---
+
+Productionalization Tasks
+1. Firebase Auth (Google Sign-In) — highest priority
+- Create an AuthProvider context with onAuthStateChanged listener and expose user, loading, signIn, signOut
+- Create a SignInPage with Google sign-in button (GoogleAuthProvider + signInWithPopup/signInWithRedirect)
+- Add firebase/auth logic to src/lib/firebase.ts (already imports getAuth)
+- Protect routes: wrap the app in AuthProvider, redirect unauthenticated users to sign-in
+- Add sign-out to the sidebar
+- (Google Cloud) Enable Google Sign-In in Firebase Auth console, configure OAuth consent screen, add authorized domains
+2. Firestore Security Rules & Indexes
+- Write Firestore security rules (lock down by request.auth.uid, allow read/write only to authenticated users)
+- Create composite indexes for queries the app runs:
+- sequences where isDeleted == false order by name
+- sequence_runs where sequenceId == X order by startedAt desc
+- sequence_runs where completedAt == null
+- (repeat for Notes, Mood, etc. when implemented)
+3. Repository: Mock → Real Data
+- Verify sequences and sequence_runs collection schemas match the Android app's output (field names, types)
+- Test that fetchSequences, fetchSequenceById, createSequence, updateSequence, deleteSequence work against real Firestore after removing USE_MOCK
+- Same for fetchAllRuns, fetchRunsForSequence, fetchActiveRuns
+- Add proper error handling in all repository functions (retry logic, user-facing error messages)
+4. Environment & Build Config
+- Create .env.example documenting all 6 FIREBASE_* vars
+- Add separate .env.production if needed for prod Firebase project
+- Verify PWA icons exist at public/pwa-192x192.png and public/pwa-512x512.png (currently referenced in manifest but may be missing)
+5. Testing Infrastructure
+- Create src/test/setup.ts with import '@testing-library/jest-dom' (referenced in vitest config, doesn't exist)
+- Write test for SequenceListView renders sequences
+- Write test for drag-to-reorder logic
+- Write test for useUpdateSequence mutation
+- Wire up CI (GitHub Actions) to run npm run test:run on push
+6. Code Quality Fixes
+- StepCard.tsx — lint error: React is not defined (needs import React or remove JSX React namespace usage)
+- useGooglePicker.ts — lint warnings: replace any types with proper types
+- Run npm run lint:fix and npm run format across the codebase
+7. Complete Stub Pages (per web.md)
+- Notes (read/write) — list, detail/editor, create, soft-delete
+- Mood (read-only) — history list, optional summary chart via Recharts
+- Vitals (read-only) — health snapshots + food log totals per day
+- ScannedProducts (read-only) — product list + detail with nutrition label
+- FoodCache (read-only) — cache list + detail
+- Tasks (read-only) — today's list grouped by category, completed tasks section
+8. Deployment
+- Initialize Firebase Hosting (firebase init hosting)
+- Add deploy script: npm run build && firebase deploy
+- Set up preview channels for PRs
+- Configure custom domain (if desired)
+9. PWA Polish
+- Generate proper PWA icons (192×192, 512×512)
+- Add public/favicon.svg if missing
+- Test service worker registration and offline fallback
+- Test display: standalone behavior on mobile
+10. Post-Launch Verification
+- End-to-end walkthrough: sign in → view sequences → create → edit → reorder → delete → view run history
+- Verify all pendingFirestoreSync: true writes are consumed by the Android app
