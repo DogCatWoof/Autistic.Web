@@ -7,6 +7,7 @@ import Notes from './pages/Notes';
 import Mood from './pages/Mood';
 import Vitals from './pages/Vitals';
 import Sequences from './pages/Sequences';
+import StepsPage from './pages/Steps';
 import ScannedProducts from './pages/ScannedProducts';
 import FoodCache from './pages/FoodCache';
 import { useAuth } from './hooks/useAuth';
@@ -35,6 +36,7 @@ function AppShell() {
           <Route path="/mood" element={<Mood />} />
           <Route path="/vitals" element={<Vitals />} />
           <Route path="/sequences" element={<Sequences />} />
+          <Route path="/steps" element={<StepsPage />} />
           <Route path="/products" element={<ScannedProducts />} />
           <Route path="/food-cache" element={<FoodCache />} />
         </Routes>

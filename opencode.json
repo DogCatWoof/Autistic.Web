@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "openai": {
+      "options": {
+        "baseURL": "http://localhost:1234/v1",
+        "apiKey": "not-needed"
+      },
+      "models": {
+        "gemma-4-26b-a4b-it-qat-q4_0": {
+          "name": "Gemma 4 26B A4B QAT"
+        }
+      }
+    }
+  },
+  "model": "openai/gemma-4-26b-a4b-it-qat-q4_0"
+}

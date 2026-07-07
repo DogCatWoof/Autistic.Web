@@ -1,0 +1,380 @@
+Category,Perk,Race,Rank,Description,FormID
+Strength,Arms Keeper,"Human, Ghoul",1,Your weapons weigh 50% less.
+Strength,Arms Keeper,"Human, Ghoul",2,Your weapons weigh 75% less.
+Strength,Bandolier,"Human, Ghoul",1,Ballistic weapon ammo weighs 45% less.
+Strength,Bandolier,"Human, Ghoul",2,Ballistic weapon ammo weighs 90% less.
+Strength,Barbarian,"Human, Ghoul",1,Gain Damage Resistance based on your STR. Doubled when not wearing armor.
+Strength,Basher,"Human, Ghoul",1,Gun bashing does +25% damage and +35% limb damage.
+Strength,Basher,"Human, Ghoul",2,Gun bashing does +50% damage and +75% limb damage.
+Strength,Bear Arms,"Human, Ghoul",1,Each stack of Bullet Storm increases your bash damage by 5%.
+Strength,Blocker,"Human, Ghoul",1,Block 15% more damage from your opponents' melee attacks.
+Strength,Blocker,"Human, Ghoul",2,Block 20% more damage from your opponents' melee attacks.
+Strength,Blocker,"Human, Ghoul",3,Block 25% more damage from your opponents' melee attacks.
+Strength,Blood Luster,"Human, Ghoul",1,Your bleed effects have 35% more damage and 25% less duration.
+Strength,Bringing the Big Guns,"Human, Ghoul",3,Your Bullet Storm stack limit is doubled.
+Strength,Bullet Storm,"Human, Ghoul",1,Gain 3% damage per 30 ammo spent. 10 max stacks.
+Strength,Bullet Storm,"Human, Ghoul",2,Gain 6% damage per 30 ammo spent. 10 max stacks.
+Strength,Bullet Storm,"Human, Ghoul",3,Gain 9% damage per 30 ammo spent. 10 max stacks.
+Strength,Easy Target,"Human, Ghoul",1,+25% ranged damage to crippled targets.
+Strength,Easy Target,"Human, Ghoul",2,+50% ranged damage to crippled targets.
+Strength,Easy Target,"Human, Ghoul",3,+75% ranged damage to crippled targets.
+Strength,Full Charge,"Human, Ghoul",1,Sprinting in Power Armor consumes half as much Fusion Core energy.
+Strength,Full Charge,"Human, Ghoul",2,Sprinting in Power Armor consumes no extra Fusion Core energy.
+Strength,Heavy Hitter,"Human, Ghoul",3,Melee weapons deal +25% power attack damage. (No Power Tools)
+Strength,Incisor,"Human, Ghoul",1,Your Melee and Fists weapons ignore 25% of your target's armor.
+Strength,Incisor,"Human, Ghoul",2,Your Melee and Fists weapons ignore 50% of your target's armor.
+Strength,Incisor,"Human, Ghoul",3,Your Melee and Fists weapons ignore 75% of your target's armor.
+Strength,Iron Fist,"Human, Ghoul",1,Your Fists deal more damage based on your DR.
+Strength,Knee-Capper,"Human, Ghoul",2,Melee weapons deal +50% limb damage. (No Power Tools)
+Strength,Lock and Load,"Human, Ghoul",2,You keep half of your Bullet Storm stacks when you reload. +1% reload speed per stack.
+Strength,Love the Spread,"Human, Ghoul",2,Weapons that fire 3 or more projectiles gain 30% range.
+Strength,Martial Artist,"Human, Ghoul",1,"Your melee weapons weigh 20% less, and you can swing them 10% faster."
+Strength,Martial Artist,"Human, Ghoul",2,"Your melee weapons weigh 40% less, and you can swing them 20% faster."
+Strength,Martial Artist,"Human, Ghoul",3,"Your melee weapons weigh 60% less, and you can swing them 30% faster."
+Strength,Natural Stance,"Human, Ghoul",1,"While equipping a melee weapon, reduce Incoming Stagger by 25%."
+Strength,Ordnance Express,"Human, Ghoul",1,Explosives weigh 45% less.
+Strength,Ordnance Express,"Human, Ghoul",2,Explosives weigh 90% less.
+Strength,Pack Rat,"Human, Ghoul",1,The weight of all junk items is reduced by 50%.
+Strength,Pack Rat,"Human, Ghoul",2,The weight of all junk items is reduced by 75%.
+Strength,Pain Train,"Human, Ghoul",1,Damage and stagger enemies by sprinting into them with Power Armor.
+Strength,Pain Train,"Human, Ghoul",2,Smash and stagger enemies by sprinting into them with Power Armor.
+Strength,Pain Train,"Human, Ghoul",3,Devastate and stagger enemies by sprinting into them with Power Armor.
+Strength,Portable Power,"Human, Ghoul",1,+10% movement speed while wearing Power Armor.
+Strength,Portable Power,"Human, Ghoul",2,+20% movement speed while wearing Power Armor.
+Strength,Portable Power,"Human, Ghoul",3,+30% movement speed while wearing Power Armor.
+Strength,Scattershot,"Human, Ghoul",2,20% of the damage dealt to a limb is applied to all limbs on your target.
+Strength,Shotgun Champ,"Human, Ghoul",3,+10% damage to crippled targets per projectile your weapon fires.
+Strength,Slugger,"Human, Ghoul",1,Your melee weapons do +10% damage to crippled targets.
+Strength,Slugger,"Human, Ghoul",2,Your melee weapons do +20% damage to crippled targets.
+Strength,Slugger,"Human, Ghoul",3,Your melee weapons do +30% damage to crippled targets.
+Strength,Strong Arm,"Human, Ghoul",1,50% increased throwing range.
+Strength,Strong Back,"Human, Ghoul",2,Gain more carry weight based on your STR.
+Strength,Sturdy Frame,"Human, Ghoul",1,You are 25% harder to stagger.
+Strength,Sturdy Frame,"Human, Ghoul",2,You are 50% harder to stagger.
+Strength,Tightly Wound,"Human, Ghoul",2,Weapons spin up 60% faster.
+Strength,Traveling Pharmacy,"Human, Ghoul",1,Weights of all Chems (including Stimpaks) are reduced by 45%.
+Strength,Traveling Pharmacy,"Human, Ghoul",2,Weights of all Chems (including Stimpaks) are reduced by 90%.
+Strength,Wound Salter,"Human, Ghoul",1,+10% damage against bleeding targets.
+Strength,Wound Salter,"Human, Ghoul",2,+20% damage against bleeding targets.
+Strength,Wound Salter,"Human, Ghoul",3,+30% damage against bleeding targets.
+Strength,Wrecking Ball,"Human, Ghoul",1,You deal +100% damage to objects and now damage your own objects.
+Perception,Awareness,"Human, Ghoul",2,Gain more VATS accuracy based on your PER.
+Perception,Bow Before Me,"Human, Ghoul",1,Your bows and crossbows ignore 20% armor and have a 5% chance to stagger.
+Perception,Bow Before Me,"Human, Ghoul",2,Your bows and crossbows ignore 40% armor and have a 10% chance to stagger.
+Perception,Butcher's Bounty,"Human, Ghoul",1,40% chance to find extra meat from animal corpses.
+Perception,Butcher's Bounty,"Human, Ghoul",2,60% chance to find extra meat from animal corpses.
+Perception,Butcher's Bounty,"Human, Ghoul",3,80% chance to find extra meat from animal corpses.
+Perception,Center Masochist,"Human, Ghoul",1,+25% ranged damage when attacking the torso.
+Perception,Center Masochist,"Human, Ghoul",2,+50% ranged damage when attacking the torso.
+Perception,Center Masochist,"Human, Ghoul",3,+75% ranged damage when attacking the torso.
+Perception,Concentrated Fire,"Human, Ghoul",1,Focus fire to gain +1% accuracy and damage per shot.
+Perception,Concentrated Fire,"Human, Ghoul",2,Focus fire to gain +2% accuracy and damage per shot.
+Perception,Concentrated Fire,"Human, Ghoul",3,Focus fire to gain +3% accuracy and damage per shot.
+Perception,Crack Shot,"Human, Ghoul",1,Small guns have 10% more range and 10% more accuracy when aiming down sights.
+Perception,Crack Shot,"Human, Ghoul",2,Small guns have 20% more range and 20% more accuracy when aiming down sights.
+Perception,Crack Shot,"Human, Ghoul",3,Small guns have 30% more range and 30% more accuracy when aiming down sights.
+Perception,Deal Sealer,"Human, Ghoul",2,Deal +10% damage for each impairment your target has.
+Perception,Down Ranger,"Human, Ghoul",1,You do +10% ranged damage to far enemies.
+Perception,Down Ranger,"Human, Ghoul",2,You do +15% ranged damage to far enemies.
+Perception,Down Ranger,"Human, Ghoul",3,You do +20% ranged damage to far enemies.
+Perception,Exterminator,"Human, Ghoul",1,Your attacks ignore 25% armor of any insect.
+Perception,Exterminator,"Human, Ghoul",2,Your attacks ignore 50% armor of any insect.
+Perception,Exterminator,"Human, Ghoul",3,Your attacks ignore 75% armor of any insect.
+Perception,Fast Fighter,"Human, Ghoul",2,Gain 50% of your bonus movement speed as reload speed.
+Perception,Fortune Finder,"Human, Ghoul",1,You hear directional audio when in range of a Caps Stash.
+Perception,Glow Sight,"Human, Ghoul",1,Deal +20% damage to Glowing Enemies.
+Perception,Glow Sight,"Human, Ghoul",2,Deal +40% damage to Glowing Enemies.
+Perception,Glow Sight,"Human, Ghoul",3,Deal +60% damage to Glowing Enemies.
+Perception,Green Thumb,"Human, Ghoul",1,Reap twice as much when harvesting flora.
+Perception,Grenadier,"Human, Ghoul",1,Your explosives detonate with a 50% larger radius.
+Perception,Grenadier,"Human, Ghoul",2,Your explosives detonate with twice the radius.
+Perception,Ground Pounder,"Human, Ghoul",1,Your small guns reload 10% faster and have 10% more hip fire accuracy.
+Perception,Ground Pounder,"Human, Ghoul",2,Your small guns reload 20% faster and have 20% more hip fire accuracy.
+Perception,Ground Pounder,"Human, Ghoul",3,Your small guns reload 30% faster and have 30% more hip fire accuracy.
+Perception,Hat Trick,"Human, Ghoul",1,Arrows and throwing weapons bounce towards an additional target dealing 70% damage.
+Perception,Hat Trick,"Human, Ghoul",2,Arrows and throwing weapons bounce towards two additional targets dealing 70% damage per bounce.
+Perception,Hat Trick,"Human, Ghoul",3,Arrows and throwing weapons bounce towards three additional targets dealing 70% damage.
+Perception,Long Shot,"Human, Ghoul",1,Your scoped weapons have 30% more range and accuracy when aiming.
+Perception,Master Archer,"Human, Ghoul",3,Arrows and thrown melee weapons pierce targets.
+Perception,Night Eyes,"Human, Ghoul",1,Gain Night Vision while sneaking.
+Perception,Night Person,"Human, Ghoul",1,Gain +1 INT and +1 PER between the hours of 6:00 p.m. and 6:00 a.m.
+Perception,Night Person,"Human, Ghoul",2,Gain +2 INT and +2 PER between the hours of 6:00 p.m. and 6:00 a.m.
+Perception,Night Person,"Human, Ghoul",3,Gain +3 INT and +3 PER between the hours of 6:00 p.m. and 6:00 a.m.
+Perception,Number Cruncher,"Human, Ghoul",3,Your weapons have 2% increased damage per AP cost.
+Perception,Pannapictagraphist,"Human, Ghoul",1,You hear directional audio when in range of a Magazine.
+Perception,Percepti-Bobble,"Human, Ghoul",1,You hear directional audio when in range of a Bobblehead.
+Perception,Picklock,"Human, Ghoul",1,"Gain +1 lockpicking skill, and the lockpicking 'sweet spot' is 10% larger."
+Perception,Picklock Expert,"Human, Ghoul",1,"Gain +1 lockpicking skill, and the lockpicking 'sweet spot' is 10% larger."
+Perception,Picklock Master,"Human, Ghoul",1,"Gain +1 lockpicking skill, and the lockpicking 'sweet spot' is 10% larger."
+Perception,Refractor,"Human, Ghoul",2,Gain Energy Resistance based on your PER.
+Perception,Scoped-up,"Human, Ghoul",2,Your scoped weapons have 50% more range when aiming.
+Perception,Skeet Shooter,"Human, Ghoul",1,Your small guns have 45% better accuracy and spread.
+Perception,Smart Shot,"Human, Ghoul",3,Deal +25% weak spot damage while aiming a scoped weapon.
+Perception,Sniper,"Human, Ghoul",1,Gain improved control and hold your breath 75% longer while aiming scopes.
+Perception,Tank Killer,"Human, Ghoul",1,Your ranged weapons ignore 20% armor.
+Perception,Tank Killer,"Human, Ghoul",2,Your ranged weapons ignore 40% armor.
+Perception,Tormentor,"Human, Ghoul",2,You deal 20% more damage per crippled limb your target has.
+Endurance,Adamantium Skeleton,"Human, Ghoul",1,Gain Limb Damage Reduction based on your END.
+Endurance,All Night Long,"Human, Ghoul",2,The positive effects of pre-war alcohol last twice as long.
+Endurance,Aquaboy/Aquagirl,"Human, Ghoul",1,You no longer take Rad damage from swimming and can breathe underwater.
+Endurance,Bloodsucker,"Human, Ghoul",1,"Bloodpacks and Cannibal now satisfy thirst, no longer irradiate, and heal twice as much."
+Endurance,Bullet Shield,"Human, Ghoul",1,Gain 5% Deflect chance for 6 sec when firing a heavy gun.
+Endurance,Bullet Shield,"Human, Ghoul",2,Gain 10% Deflect chance for 6 sec when firing a heavy gun.
+Endurance,Bullet Shield,"Human, Ghoul",3,Gain 15% Deflect chance for 6 sec when firing a heavy gun.
+Endurance,Cannibal,"Human, Ghoul",1,"Eating human, Ghoul, Super Mutant, Scorched, or Mole Miner corpses restores Health and hunger."
+Endurance,Chem Fiend,"Human, Ghoul",2,Any chems you take last 100% longer.
+Endurance,Chem Resistant,Human,1,You're half as likely to get addicted when consuming Chems.
+Endurance,Chem Resistant,Human,2,You gain complete immunity to chem addiction.
+Endurance,Cola Nut,"Human, Ghoul",1,Nuka-Cola drinks are now twice as beneficial.
+Endurance,Cola Nut,"Human, Ghoul",2,Nuka-Cola drinks are now three times as beneficial.
+Endurance,Dromedary,Human,1,All drinks quench thirst by an additional 50%.
+Endurance,Dromedary,Human,2,All drinks quench thirst by an additional 100%.
+Endurance,Ghoulish,Human,1,Radiation now regenerates your lost Health.
+Endurance,Ghoulish,Human,2,Radiation now regenerates more of your lost Health.
+Endurance,Ghoulish,Human,3,Radiation now regenerates even more of your lost Health!
+Endurance,Good Doggy,"Human, Ghoul",1,Eating dog food is now three times as beneficial.
+Endurance,Hardy,"Human, Ghoul",1,Take 15% less damage from explosions.
+Endurance,Hardy,"Human, Ghoul",2,Take 30% less damage from explosions.
+Endurance,Hardy,"Human, Ghoul",3,Take 45% less damage from explosions.
+Endurance,Homebody,"Human, Ghoul",1,"While in a C.A.M.P. or Workshop, gain HP & Limb regen. Improves well rested benefits."
+Endurance,Hydro Fix,Human,1,Chems restore thirst.
+Endurance,Hydro Fix,Human,2,Chems restore twice as much thirst.
+Endurance,Iron Stomach,Human,1,Increased Damage and Energy Resistance based on END while not diseased.
+Endurance,Ironclad,"Human, Ghoul",1,Armor provides 15% more protection. Double if wearing a matching set.
+Endurance,Ironclad,"Human, Ghoul",2,Armor provides 20% more protection. Double if wearing a matching set.
+Endurance,Ironclad,"Human, Ghoul",3,Armor provides 25% more protection. Double if wearing a matching set.
+Endurance,Lead Belly,Human,1,You take less radiation from eating or drinking based on your END.
+Endurance,LifeGiver,"Human, Ghoul",2,Gain more max HP per point in END.
+Endurance,Munchy Resistance,Human,1,Chems restore hunger.
+Endurance,Munchy Resistance,Human,2,Chems restore twice as much hunger.
+Endurance,Natural Resistance,Human,1,Increased Elemental Resistances based on END while not diseased.
+Endurance,Nocturnal Fortitude,"Human, Ghoul",1,Gain +20 to Max Health between the hours of 6:00 p.m. and 6:00 a.m.
+Endurance,Nocturnal Fortitude,"Human, Ghoul",2,Gain +40 to Max Health between the hours of 6:00 p.m. and 6:00 a.m.
+Endurance,Photosynthetic,"Human, Ghoul",1,Gain Health regen between the hours of 6:00 a.m. and 6:00 p.m.
+Endurance,Photosynthetic,"Human, Ghoul",2,Gain improved Health regen between the hours of 6:00 a.m. and 6:00 p.m.
+Endurance,Professional Drinker,"Human, Ghoul",2,There's no chance you'll get addicted to alcohol.
+Endurance,Rad Resistant,Human,1,Gain Radiation Resistance based on your END.
+Endurance,Rad Sponge,Human,2,Absorb 20% of RADs taken and restore Hunger and Thirst.
+Endurance,Radicool,Human,1,"The greater your Rads, the greater your Strength (max +5 STR)!"
+Endurance,Rejuvenated,Human,1,You gain increased benefits from being Well Fed or Hydrated.
+Endurance,Rejuvenated,Human,2,Benefits of being Well Fed or Hydrated are further increased when you have less than 10% RADS.
+Endurance,Slow Metabolizer,Human,1,All food satisfies hunger by an additional 50%.
+Endurance,Slow Metabolizer,Human,2,All food satisfies hunger by an additional 100%.
+Endurance,Solar Powered,"Human, Ghoul",1,Gain +1 to STR and END between the hours of 6:00 a.m. and 6:00 p.m.
+Endurance,Solar Powered,"Human, Ghoul",2,Gain +2 to STR and END between the hours of 6:00 a.m. and 6:00 p.m.
+Endurance,Solar Powered,"Human, Ghoul",3,Gain +3 to STR and END between the hours of 6:00 a.m. and 6:00 p.m.
+Endurance,Starched Genes,"Human, Ghoul",1,You will never mutate from rads and RadAway will never cure mutations.
+Endurance,Sun Kissed,Human,1,Slowly regen radiation damage between the hours of 6:00 a.m. and 6:00 p.m.
+Endurance,Sun Kissed,Human,2,Quickly regen radiation damage between the hours of 6:00 a.m. and 6:00 p.m.
+Endurance,Thirst Quencher,Human,1,Increased Max AP based on END while not diseased.
+Endurance,Thru-hiker,"Human, Ghoul",1,Food and drink weights are reduced by 45%.
+Endurance,Thru-hiker,"Human, Ghoul",2,Food and drink weights are reduced by 90%.
+Endurance,Vaccinated,Human,1,Increased Disease Resistance based on END.
+Charisma,Animal Friend,"Human, Ghoul",1,Aim your gun at an Animal for a 25% chance to pacify it.
+Charisma,Animal Friend,"Human, Ghoul",2,Aim your gun at an Animal for a 50% chance to pacify it.
+Charisma,Animal Friend,"Human, Ghoul",3,Aim your gun at an Animal for a 75% chance to pacify it.
+Charisma,Anti-Epidemic,"Human, Ghoul",1,Your disease cures have a 50% chance to cure a disease on nearby teammates.
+Charisma,Anti-Epidemic,"Human, Ghoul",2,Your disease cures always cure a disease from nearby teammates too.
+Charisma,Bodyguards,"Human, Ghoul",1,Gain Damage & Energy Resistance based on your CHA and number of teammates.
+Charisma,E.M.T.,"Human, Ghoul",2,Automatically revive downed teammates once every 3 minutes and grant them increased healing for 1 minute.
+Charisma,Friendly Fire,"Human, Ghoul",1,Teammates hit by your flame weapons regen health briefly (no grenades).
+Charisma,Friendly Fire,"Human, Ghoul",2,Teammates hit by your flame weapons regen more health briefly (no grenades).
+Charisma,Friendly Fire,"Human, Ghoul",3,Teammates hit by your flame weapons regen even more health (no grenades).
+Charisma,Happy Camper,Human,1,Hunger and thirst grow 40% slower when in camp or in a team workshop.
+Charisma,Happy Camper,Human,2,Hunger and thirst grow 80% slower when in camp or in a team workshop.
+Charisma,Happy-Go-Lucky,"Human, Ghoul",1,Your Luck is increased by 2 while under the influence of alcohol.
+Charisma,Happy-Go-Lucky,"Human, Ghoul",2,Your Luck is increased by 3 while under the influence of alcohol.
+Charisma,Hard Bargain,"Human, Ghoul",1,Gain 7 CHA when bartering at non-player vendors.
+Charisma,Healing Hands,"Human, Ghoul",1,Players you revive are fully healed.
+Charisma,Injector,"Human, Ghoul",1,Players you revive have +18 Action Point regen for 1 minute.
+Charisma,Inspirational,"Human, Ghoul",1,Gain more XP while on a team based on your CHA.
+Charisma,Lone Wanderer,"Human, Ghoul",2,Gain Resistances and AP Regen based on your CHA while not on a team.
+Charisma,Magnetic Personality,"Human, Ghoul",1,"Gain 1 Charisma for each teammate, excluding yourself."
+Charisma,Magnetic Personality,"Human, Ghoul",2,"Gain 2 Charisma for each teammate, excluding yourself."
+Charisma,Overly Generous,Human,1,Rads increase your chance to inflict 25 Rads with melee attacks!
+Charisma,Overly Generous,Human,2,Rads increase your chance to inflict 50 Rads with melee attacks!
+Charisma,Party Boy/Party Girl,"Human, Ghoul",2,The positive effects of pre-war alcohol are doubled.
+Charisma,Party Boy/Party Girl,"Human, Ghoul",3,The positive effects of pre-war alcohol are tripled.
+Charisma,Philanthropist,"Human, Ghoul",1,Restore some of your team's hunger and thirst when you eat or drink.
+Charisma,Philanthropist,"Human, Ghoul",2,Restore more of your team's hunger and thirst when you eat or drink.
+Charisma,Philanthropist,"Human, Ghoul",3,Restore much more of your team's hunger and thirst when you eat or drink.
+Charisma,Quack Surgeon,"Human, Ghoul",1,Revive other players with liquor!
+Charisma,Revenant,"Human, Ghoul",1,Players you revive have +25% damage for 2 min.
+Charisma,Spiritual Healer,"Human, Ghoul",1,Regenerate HP while on a team based on your CHA.
+Charisma,Squad Maneuvers,"Human, Ghoul",1,Run 10% faster when part of a team.
+Charisma,Squad Maneuvers,"Human, Ghoul",2,Run 20% faster when part of a team.
+Charisma,Strange In Numbers,"Human, Ghoul",1,Positive mutation effects are +25% stronger if teammates are mutated too.
+Charisma,Suppressor,"Human, Ghoul",1,Reduce your target's damage output by 10% for 2 seconds after you attack.
+Charisma,Suppressor,"Human, Ghoul",2,Reduce your target's damage output by 20% for 2 seconds after you attack.
+Charisma,Suppressor,"Human, Ghoul",3,Reduce your target's damage output by 30% for 2 seconds after you attack.
+Charisma,Team Medic,"Human, Ghoul",1,Your stimpaks now also heal nearby teammates for half the normal strength.
+Charisma,Team Medic,"Human, Ghoul",2,Your stimpaks now also heal nearby teammates for 75% of normal strength.
+Charisma,Team Medic,"Human, Ghoul",3,Your stimpaks now also heal nearby teammates for their full strength.
+Charisma,Tenderizer,"Human, Ghoul",2,Each attack makes your target take increased damage.
+Charisma,Travel Agent,"Human, Ghoul",1,You can Fast Travel while over encumbered at an increased cost.
+Charisma,Wasteland Whisperer,"Human, Ghoul",1,Aim your gun at some creatures for a 25% chance to pacify it.
+Charisma,Wasteland Whisperer,"Human, Ghoul",2,Aim your gun at some creatures for a 50% chance to pacify it.
+Charisma,Wasteland Whisperer,"Human, Ghoul",3,Aim your gun at some creatures for a 75% chance to pacify it.
+Intelligence,Armorer,"Human, Ghoul",1,Your crafted armor has improved durability and costs fewer materials.
+Intelligence,Batteries Included,"Human, Ghoul",1,Energy weapon ammo weighs 45% less.
+Intelligence,Batteries Included,"Human, Ghoul",2,Energy weapon ammo weighs 90% less.
+Intelligence,Chemist,"Human, Ghoul",1,You get double the quantity when you craft chems!
+Intelligence,Contractor,"Human, Ghoul",1,Crafting workshop items now costs 25% fewer materials.
+Intelligence,Contractor,"Human, Ghoul",2,Crafting workshop items now costs 50% fewer materials.
+Intelligence,Cryologist,"Human, Ghoul",2,Increase cryo damage based on your INT.
+Intelligence,Curator,"Human, Ghoul",1,The benefits of bobbleheads and magazines last twice as long.
+Intelligence,Demolition Expert,"Human, Ghoul",1,Your explosives do +20% damage.
+Intelligence,Demolition Expert,"Human, Ghoul",2,Your explosives do +40% damage.
+Intelligence,Demolition Expert,"Human, Ghoul",3,Your explosives do +60% damage.
+Intelligence,Field Surgeon,"Human, Ghoul",2,Stimpaks and RadAway heal 60% faster.
+Intelligence,First Aid,"Human, Ghoul",1,Stimpaks restore more HP based on your INT.
+Intelligence,Fix It Good,"Human, Ghoul",1,You can repair armor and Power Armor to 130% of normal maximum condition.
+Intelligence,Fix It Good,"Human, Ghoul",2,You can repair armor and Power Armor to 160% of normal maximum condition.
+Intelligence,Fix It Good,"Human, Ghoul",3,You can repair armor and Power Armor to 200% of normal maximum condition.
+Intelligence,Good With Salt,"Human, Ghoul",1,Food in your inventory will spoil 45% slower.
+Intelligence,Good With Salt,"Human, Ghoul",2,Food in your inventory will spoil 90% slower.
+Intelligence,Gunsmith,"Human, Ghoul",1,Guns break 20% slower.
+Intelligence,Gunsmith,"Human, Ghoul",2,Guns break 35% slower.
+Intelligence,Gunsmith,"Human, Ghoul",3,Guns break 50% slower.
+Intelligence,Hacker,"Human, Ghoul",1,"Gain +1 hacking skill, and terminal lock-out time is reduced."
+Intelligence,Hacker Expert,"Human, Ghoul",1,"Gain +1 hacking skill, and terminal lock-out time is reduced."
+Intelligence,Hacker Master,"Human, Ghoul",1,"Gain +1 hacking skill, and terminal lock-out time is reduced."
+Intelligence,Licensed Plumber,"Human, Ghoul",1,Your pipe weapons break 20% slower and are cheaper to repair.
+Intelligence,Licensed Plumber,"Human, Ghoul",2,Your pipe weapons break 40% slower and are cheaper to repair.
+Intelligence,Licensed Plumber,"Human, Ghoul",3,Your pipe weapons break 60% slower and are cheaper to repair.
+Intelligence,Makeshift Warrior,"Human, Ghoul",1,Melee weapons break 40% slower.
+Intelligence,Makeshift Warrior,"Human, Ghoul",2,Melee weapons break 60% slower.
+Intelligence,Makeshift Warrior,"Human, Ghoul",3,Melee weapons break 80% slower.
+Intelligence,Nerd Rage!,"Human, Ghoul",2,"While your Health is low, gain increased damage and AP regen."
+Intelligence,Pharmacist,Human,1,RadAway removes more radiation based on your INT.
+Intelligence,Power Patcher,"Human, Ghoul",1,Your Power Armor breaks 20% slower and is cheaper to repair.
+Intelligence,Power Patcher,"Human, Ghoul",2,Your Power Armor breaks 40% slower and is cheaper to repair.
+Intelligence,Power Patcher,"Human, Ghoul",3,Your Power Armor breaks 60% slower and is cheaper to repair.
+Intelligence,Power Smith,"Human, Ghoul",1,Your crafted Power Armor now has improved durability and costs fewer materials.
+Intelligence,Power User,"Human, Ghoul",1,Fusion Cores now last 30% longer.
+Intelligence,Power User,"Human, Ghoul",2,Fusion Cores now last 60% longer.
+Intelligence,Power User,"Human, Ghoul",3,Fusion Core duration is now doubled.
+Intelligence,Pyro-Technician,"Human, Ghoul",2,Increase fire damage based on your INT.
+Intelligence,Robotics Expert,"Human, Ghoul",1,Hack an enemy robot for a 25% chance to pacify it.
+Intelligence,Robotics Expert,"Human, Ghoul",2,Hack an enemy robot for a 50% chance to pacify it.
+Intelligence,Robotics Expert,"Human, Ghoul",3,Hack an enemy robot for a 75% chance to pacify it.
+Intelligence,Science!,"Human, Ghoul",2,Increase energy damage based on your INT.
+Intelligence,Scrapper,"Human, Ghoul",1,Obtain more components when you scrap weapons and armor.
+Intelligence,Stabilized,"Human, Ghoul",2,Big guns gain 30% accuracy. Double in Power Armor.
+Intelligence,Stable Tools,"Human, Ghoul",1,Power Tools break 10% slower.
+Intelligence,Stable Tools,"Human, Ghoul",2,Power Tools break 25% slower.
+Intelligence,Stable Tools,"Human, Ghoul",3,Power Tools break 40% slower.
+Intelligence,Weapon Artisan,"Human, Ghoul",1,You can repair any weapon to 130% of normal maximum condition.
+Intelligence,Weapon Artisan,"Human, Ghoul",2,You can repair any weapon to 160% of normal maximum condition.
+Intelligence,Weapon Artisan,"Human, Ghoul",3,You can repair any weapon to 200% of normal maximum condition.
+Intelligence,White Knight,"Human, Ghoul",1,Your armor breaks 20% slower and is cheaper to repair.
+Intelligence,White Knight,"Human, Ghoul",2,Your armor breaks 40% slower and is cheaper to repair.
+Intelligence,White Knight,"Human, Ghoul",3,Your armor breaks 60% slower and is cheaper to repair.
+Agility,Action Boy/Action Girl,"Human, Ghoul",1,Action Points regenerate 15% faster.
+Agility,Action Boy/Action Girl,"Human, Ghoul",2,Action Points regenerate 30% faster.
+Agility,Action Boy/Action Girl,"Human, Ghoul",3,Action Points regenerate 45% faster.
+Agility,Adrenaline,"Human, Ghoul",2,Gain +10% damage per kill while on a Kill Streak (Max 10).
+Agility,Ammosmith,"Human, Ghoul",1,Produce 40% more rounds when crafting ammunition.
+Agility,Ammosmith,"Human, Ghoul",2,Produce 80% more rounds when crafting ammunition.
+Agility,Born Survivor,"Human, Ghoul",1,"Falling below 20% health will automatically use a Stimpak, once every 20s."
+Agility,Born Survivor,"Human, Ghoul",2,"Falling below 30% health will automatically use a Stimpak, once every 20s."
+Agility,Born Survivor,"Human, Ghoul",3,"Falling below 40% health will automatically use a Stimpak, once every 20s."
+Agility,Covert Operative,"Human, Ghoul",1,Your ranged attacks do an additional 15% sneak attack damage.
+Agility,Covert Operative,"Human, Ghoul",2,Your ranged attacks do an additional 30% sneak attack damage.
+Agility,Covert Operative,"Human, Ghoul",3,Your ranged attacks do an additional 50% sneak attack damage.
+Agility,Dead Man Sprinting,"Human, Ghoul",1,Sprint 10% faster at increased AP cost when your health is below 40%.
+Agility,Dead Man Sprinting,"Human, Ghoul",2,Sprint 20% faster at increased AP cost when your health is below 50%.
+Agility,Dodgy,"Human, Ghoul",2,+5% chance to Evade. Evade no longer has a cooldown. Instead it costs AP.
+Agility,Enforcer,"Human, Ghoul",1,Your small guns gain a 5% stagger chance and +25% limb damage.
+Agility,Enforcer,"Human, Ghoul",2,Your small guns gain a 10% stagger chance and +50% limb damage.
+Agility,Enforcer,"Human, Ghoul",3,Your small guns gain a 15% stagger chance and +75% limb damage.
+Agility,Escape Artist,"Human, Ghoul",1,"Sneak to lose enemies, and running no longer affects stealth."
+Agility,Evasive,"Human, Ghoul",1,Chance to Evade attacks based on AGI. (No Power Armor)
+Agility,Goat Legs,"Human, Ghoul",1,Take no damage from falling.
+Agility,Guerrilla,"Human, Ghoul",1,You do +10% ranged damage to close enemies.
+Agility,Guerrilla,"Human, Ghoul",2,You do +15% ranged damage to close enemies.
+Agility,Guerrilla,"Human, Ghoul",3,You do +20% ranged damage to close enemies.
+Agility,Guerrilla Expert,"Human, Ghoul",2,"+1% reload speed per Onslaught stack, +3 max stacks."
+Agility,Guerrilla Master,"Human, Ghoul",3,"+5% ranged damage to close enemies per Onslaught stack, +5 max stacks."
+Agility,Gun Fu,"Human, Ghoul",1,V.A.T.S. swaps targets on kill with +30% damage to your next target.
+Agility,Gun Fu,"Human, Ghoul",2,V.A.T.S. swaps targets on kill with +60% damage up to 2 targets.
+Agility,Gun Fu,"Human, Ghoul",3,V.A.T.S. swaps targets on kill with +90% damage up to 3 targets.
+Agility,Gun Runner,"Human, Ghoul",1,Your running speed is increased by 10% when you have a ranged weapon equipped.
+Agility,Gun Runner,"Human, Ghoul",2,Your running speed is increased by 20% when you have a ranged weapon equipped.
+Agility,Gunslinger,"Human, Ghoul",1,Your ranged weapons do +6% weak spot damage.
+Agility,Gunslinger,"Human, Ghoul",2,Your ranged weapons do +9% weak spot damage.
+Agility,Gunslinger,"Human, Ghoul",3,Your ranged weapons do +12% weak spot damage.
+Agility,Gunslinger Expert,"Human, Ghoul",2,"+1% ranged weak spot damage per Onslaught stack, +3 max stacks."
+Agility,Gunslinger Master,"Human, Ghoul",3,"Gain Onslaught stacks over time and spend them on attacks, +10 max stacks."
+Agility,Home Defense,"Human, Ghoul",1,Workshop turrets do +50% damage and you can disarm better traps.
+Agility,Home Defense,"Human, Ghoul",2,Workshop turrets do +75% damage and you can disarm advanced traps.
+Agility,Home Defense,"Human, Ghoul",3,Workshop turrets do +100% damage and you can disarm expert traps.
+Agility,Light Footed,"Human, Ghoul",1,"While sneaking, you never trigger mines or floor-based traps."
+Agility,Marathoner,"Human, Ghoul",1,Sprinting consumes 20% fewer Action Points. (No Power Armor)
+Agility,Marathoner,"Human, Ghoul",2,Sprinting consumes 30% fewer Action Points. (No Power Armor)
+Agility,Marathoner,"Human, Ghoul",3,Sprinting consumes 40% fewer Action Points. (No Power Armor)
+Agility,Mister Sandman,"Human, Ghoul",1,Your silenced weapons do an additional 50% sneak attack damage.
+Agility,Mister Sandman,"Human, Ghoul",2,Your silenced weapons do an additional 100% sneak attack damage.
+Agility,Modern Renegade,"Human, Ghoul",1,Small guns gain +10% hip fire accuracy and +25% limb damage.
+Agility,Modern Renegade,"Human, Ghoul",2,Small guns gain +20% hip fire accuracy and +50% limb damage.
+Agility,Modern Renegade,"Human, Ghoul",3,Small guns gain +30% hip fire accuracy and +75% limb damage.
+Agility,Moving Target,"Human, Ghoul",1,Gain +5% chance to Evade while sprinting. (No Power Armor)
+Agility,Moving Target,"Human, Ghoul",2,Gain +10% chance to Evade while sprinting. (No Power Armor)
+Agility,Moving Target,"Human, Ghoul",3,Gain +15% chance to Evade while sprinting. (No Power Armor)
+Agility,Ninja,"Human, Ghoul",1,"Bows, throwing, and melee weapons do +50% sneak attack damage."
+Agility,Ninja,"Human, Ghoul",2,"Bows, throwing, and melee weapons do +100% sneak attack damage."
+Agility,Packin' Light,"Human, Ghoul",1,Your Action Points regenerate faster when not over encumbered.
+Agility,Secret Agent,"Human, Ghoul",1,Stealth Boys last twice as long!
+Agility,Secret Agent,"Human, Ghoul",2,Stealth Boys last three times as long!
+Agility,Secret Agent,"Human, Ghoul",3,Stealth Boys last four times as long!
+Agility,Sneak,"Human, Ghoul",1,You are 25% harder to detect while sneaking.
+Agility,Sneak,"Human, Ghoul",2,You are 50% harder to detect while sneaking.
+Agility,Sneak,"Human, Ghoul",3,You are 75% harder to detect while sneaking.
+Luck,Better Criticals,"Human, Ghoul",1,V.A.T.S. criticals now do +50% damage.
+Luck,Better Criticals,"Human, Ghoul",2,V.A.T.S. criticals now do +75% damage.
+Luck,Better Criticals,"Human, Ghoul",3,V.A.T.S. criticals now do +100% damage.
+Luck,Bloody Mess,"Human, Ghoul",1,Bleeding enemies you kill have a chance to explode based on your LCK.
+Luck,Can Do!,"Human, Ghoul",1,Find more canned goods based on your LCK.
+Luck,Cap Collector,"Human, Ghoul",1,You find more bottle caps based on your LCK.
+Luck,Class Freak,"Human, Ghoul",1,The negative effects of your mutations are reduced by 25%.
+Luck,Class Freak,"Human, Ghoul",2,The negative effects of your mutations are reduced by 50%.
+Luck,Class Freak,"Human, Ghoul",3,The negative effects of your mutations are reduced by 75%.
+Luck,Critical Savvy,"Human, Ghoul",1,Critical Hits now only consume 85% of your critical meter.
+Luck,Critical Savvy,"Human, Ghoul",2,Critical Hits now only consume 70% of your critical meter.
+Luck,Critical Savvy,"Human, Ghoul",3,Critical Hits now only consume 55% of your critical meter.
+Luck,Dry Nurse,"Human, Ghoul",1,You have a 50% chance to keep your Stimpak when you revive another player.
+Luck,Four Leaf Clover,"Human, Ghoul",1,Misses in V.A.T.S. now contribute to the Critical Meter based on your LCK.
+Luck,Grim Reaper's Sprint,"Human, Ghoul",2,"Any kill in V.A.T.S. restores Action Points, based on your LCK."
+Luck,Junk Shield,"Human, Ghoul",1,Gain Resistances based on your LCK and amount of junk held.
+Luck,Last Laugh,"Human, Ghoul",1,You drop a live grenade from your inventory when you die.
+Luck,Luck of the Draw,"Human, Ghoul",1,Slight chance your weapon will repair itself when hitting an enemy.
+Luck,Luck of the Draw,"Human, Ghoul",2,Chance your weapon will repair itself even more when hitting an enemy.
+Luck,Luck of the Draw,"Human, Ghoul",3,Chance your weapon will greatly repair itself when hitting an enemy.
+Luck,Lucky Break,"Human, Ghoul",1,Slight chance your equipped armor will repair itself when struck.
+Luck,Lucky Break,"Human, Ghoul",2,Chance your equipped armor will repair itself even more when struck.
+Luck,Lucky Break,"Human, Ghoul",3,Chance your equipped armor will greatly repair itself when struck.
+Luck,Mysterious Savior,"Human, Ghoul",1,A Mysterious Savior will occasionally appear to revive you when downed.
+Luck,Mysterious Savior,"Human, Ghoul",2,A Mysterious Savior will more frequently appear to revive you when downed.
+Luck,Mysterious Savior,"Human, Ghoul",3,The Mysterious Savior will regularly appear to revive you when downed.
+Luck,Mysterious Stranger,"Human, Ghoul",1,The Mysterious Stranger will appear occasionally in V.A.T.S. to lend a hand.
+Luck,Mysterious Stranger,"Human, Ghoul",2,The Mysterious Stranger appears more often when using V.A.T.S.
+Luck,Mysterious Stranger,"Human, Ghoul",3,"The Mysterious Stranger appears so much in V.A.T.S., he knows you by name."
+Luck,Mystery Meat,Human,1,Stimpaks may generate edible meat tissue. Higher Rads improve the chance.
+Luck,Mystery Meat,Human,2,Stimpaks generate more edible meat tissue. Higher Rads improve the chance.
+Luck,Mystery Meat,Human,3,"Stimpaks generate excessive, edible meat. Higher Rads improve the chance."
+Luck,One Gun Army,"Human, Ghoul",1,Heavy guns gain a 4% stagger chance and +25% limb damage.
+Luck,One Gun Army,"Human, Ghoul",2,Heavy guns gain a 8% stagger chance and +50% limb damage.
+Luck,One Gun Army,"Human, Ghoul",3,Heavy guns gain a 12% stagger chance and +75% limb damage.
+Luck,Pharma Farma,"Human, Ghoul",1,Find more first aid Chems based on your LCK.
+Luck,Psychopath,"Human, Ghoul",2,Hits outside V.A.T.S. refill your Critical Meter at 10% contribution.
+Luck,Quick Hands,Human,1,Gain a 6% chance to instantly reload when your clip is empty.
+Luck,Quick Hands,Human,2,Gain a 12% chance to instantly reload when your clip is empty.
+Luck,Quick Hands,Human,3,Gain a 18% chance to instantly reload when your clip is empty.
+Luck,Ricochet,"Human, Ghoul",1,Gain a chance to Deflect ranged attacks based on LCK.
+Luck,Scrounger,"Human, Ghoul",1,Find more non-explosive ammo based on your LCK.
+Luck,Serendipity,"Human, Ghoul",1,"While below 30% health, gain a chance to Evade based on LCK. (No Power Armor)"
+Luck,Storm Chaser,"Human, Ghoul",1,Gain health regeneration while outside during rain or Rad Storms.
+Luck,Storm Chaser,"Human, Ghoul",2,Gain high health regeneration while outside during rain or Rad Storms.
+Luck,Super Duper,"Human, Ghoul",1,"When you craft anything, there is a 10% chance you'll get double results!"
+Luck,Super Duper,"Human, Ghoul",2,"When you craft anything, there is a 20% chance you'll get double results!"
+Luck,Super Duper,"Human, Ghoul",3,"When you craft anything, there is a 30% chance you'll get double results!"
