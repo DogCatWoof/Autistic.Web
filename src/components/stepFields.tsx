@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import type { ActionStep, MediaAttachment, RepeatGroupStep, RepetitionStep, SequenceStep } from '../types/sequence';
-import { createStep } from '../types/sequence';
+import type { ReactNode } from 'react';
+import type { Step, MediaAttachment } from '../types/step';
 import FileDropInput from './FileDropInput';
 import { StepIcon } from './StepIcons';
 
@@ -8,7 +7,7 @@ const RepIcon = (position?: number) => <StepIcon type="repetition" count={positi
 const RepGrpIcon = () => <StepIcon type="repeat_group" />;
 const ActIcon = () => <StepIcon type="action" />;
 
-export const stepTypeMeta: Record<SequenceStep['type'], { icon: (position?: number) => React.ReactNode; label: string }> = {
+export const stepTypeMeta: Record<Step['type'], { icon: (position?: number) => ReactNode; label: string }> = {
   repetition: { icon: RepIcon, label: 'Repetitions' },
   repeat_group: { icon: RepGrpIcon, label: 'Repeat Group' },
   action: { icon: ActIcon, label: 'Action' },
@@ -16,17 +15,17 @@ export const stepTypeMeta: Record<SequenceStep['type'], { icon: (position?: numb
 
 export interface StepFieldDef {
   key: string;
-  label: string | ((step: SequenceStep) => string);
+  label: string | ((step: Step) => string);
   type: 'text' | 'number' | 'select' | 'toggle' | 'media' | 'textarea';
   primary?: boolean;
   options?: { label: string; value: string }[];
-  showIf?: (step: SequenceStep) => boolean;
+  showIf?: (step: Step) => boolean;
   width?: string;
 }
 
 const commonMedia: StepFieldDef = { key: 'media', label: 'Image', type: 'media' };
 const commonInstructions: StepFieldDef = { key: 'instructions', label: 'Instructions', type: 'textarea' };
-const commonSets: StepFieldDef = { key: 'sets', label: 'Sets', type: 'number' };
+const commonSets: StepFieldDef = { key: 'steps', label: 'Sets', type: 'number' };
 
 const repetitionFields: StepFieldDef[] = [
   { key: 'equipment', label: 'Equipment', type: 'text' },
@@ -49,28 +48,27 @@ const timerEndOptions = [
 const actionFields: StepFieldDef[] = [
   commonInstructions,
   { key: 'useDuration', label: 'Use duration', type: 'toggle' },
-  { key: 'timerEndBehavior', label: 'On complete', type: 'select', options: timerEndOptions, showIf: (s) => s.type === 'action' && (s as ActionStep).useDuration },
-  { key: 'durationMinutes', label: 'Duration (minutes)', type: 'number', primary: true, showIf: (s) => s.type === 'action' && (s as ActionStep).useDuration },
+  { key: 'timerEndBehavior', label: 'On complete', type: 'select', options: timerEndOptions, showIf: (s) => s.type === 'action' && s.useDuration },
+  { key: 'durationMinutes', label: 'Duration (minutes)', type: 'number', primary: true, showIf: (s) => s.type === 'action' && s.useDuration },
   commonMedia,
 ];
 
 const repeatGroupFields: StepFieldDef[] = [
-  { key: 'label', label: 'Label', type: 'text' },
   commonInstructions,
   commonMedia,
 ];
 
-const fieldsMap: Record<SequenceStep['type'], StepFieldDef[]> = {
+const fieldsMap: Record<Step['type'], StepFieldDef[]> = {
   repetition: repetitionFields,
   repeat_group: repeatGroupFields,
   action: actionFields,
 };
 
-export function getFields(type: SequenceStep['type']): StepFieldDef[] {
+export function getFields(type: Step['type']): StepFieldDef[] {
   return fieldsMap[type];
 }
 
-function asRecord(s: SequenceStep): Record<string, unknown> {
+function asRecord(s: Step): Record<string, unknown> {
   return s as unknown as Record<string, unknown>;
 }
 
@@ -83,7 +81,7 @@ function fmt(val: unknown, def: StepFieldDef): string {
   return String(val ?? '');
 }
 
-export function StepFieldsDisplay({ step }: { step: SequenceStep }) {
+export function StepFieldsDisplay({ step }: { step: Step }) {
   const fields = getFields(step.type);
   const nonMedia = fields.filter((f) => f.type !== 'textarea' && f.type !== 'media');
   const secondary = nonMedia.filter((f) => !f.primary && f.type !== 'toggle' && (!f.showIf || f.showIf(step)));
@@ -102,20 +100,18 @@ export function StepFieldsDisplay({ step }: { step: SequenceStep }) {
 
   function renderPrimary() {
     if (step.type === 'repetition') {
-      const r = step as RepetitionStep;
-      if (r.unit === 'weight' && r.weightLb > 0) {
-        return <div className="text-sm font-semibold text-gray-900">{r.steps}×{r.reps} @ {r.weightLb} lb</div>;
+      if (step.unit === 'weight' && step.weightLb > 0) {
+        return <div className="text-sm font-semibold text-gray-900">{step.steps}×{step.reps} @ {step.weightLb} lb</div>;
       }
-      if (r.unit === 'seconds' && r.durationSeconds > 0) {
-        return <div className="text-sm font-semibold text-gray-900">{r.steps}×{r.reps} @ {r.durationSeconds} sec</div>;
+      if (step.unit === 'seconds' && step.durationSeconds > 0) {
+        return <div className="text-sm font-semibold text-gray-900">{step.steps}×{step.reps} @ {step.durationSeconds} sec</div>;
       }
-      return <div className="text-sm font-semibold text-gray-900">{r.steps}×{r.reps}</div>;
+      return <div className="text-sm font-semibold text-gray-900">{step.steps}×{step.reps}</div>;
     }
     if (step.type === 'action') {
-      const a = step as ActionStep;
-      return a.useDuration && a.durationMinutes > 0 ? (
+      return step.useDuration && step.durationMinutes > 0 ? (
         <div className="text-sm font-semibold text-gray-900">
-          {a.durationMinutes} min
+          {step.durationMinutes} min
         </div>
       ) : null;
     }
@@ -159,42 +155,22 @@ export function StepFieldsDisplay({ step }: { step: SequenceStep }) {
 export function StepFieldsForm({
   step,
   onChange,
+  onAddChildStep,
+  onEditChildStep,
+  onRemoveChildStep,
+  childSteps,
 }: {
-  step: SequenceStep;
-  onChange: (updated: SequenceStep) => void;
+  step: Step;
+  onChange: (updated: Step) => void;
+  onAddChildStep?: () => void;
+  onEditChildStep?: (stepId: string) => void;
+  onRemoveChildStep?: (stepId: string) => void;
+  childSteps?: Step[];
 }) {
   const fields = getFields(step.type);
-  const upd = (key: string, val: unknown) => onChange({ ...step, [key]: val } as SequenceStep);
+  const upd = (key: string, val: unknown) => onChange({ ...step, [key]: val } as Step);
 
-  const [editingSubIdx, setEditingSubIdx] = useState<number | null>(null);
-  const [showSubPicker, setShowSubPicker] = useState(false);
-
-  const subSteps = step.type === 'repeat_group' ? (step as RepeatGroupStep).steps : [];
-  function addSubStep(type: SequenceStep['type']) {
-    if (step.type !== 'repeat_group') return;
-    const newStep = createStep(type, subSteps.length + 1);
-    onChange({ ...step, steps: [...subSteps, newStep] } as SequenceStep);
-    setEditingSubIdx(subSteps.length);
-    setShowSubPicker(false);
-  }
-  function updateSubStep(idx: number, updated: SequenceStep) {
-    if (step.type !== 'repeat_group') return;
-    const next = [...subSteps];
-    next[idx] = updated;
-    onChange({ ...step, steps: next } as SequenceStep);
-  }
-  function deleteSubStep(idx: number) {
-    if (step.type !== 'repeat_group') return;
-    const name = subStepTitle(subSteps[idx]);
-    if (!window.confirm(`Delete sub-step "${name}"?`)) return;
-    onChange({ ...step, steps: subSteps.filter((_, i) => i !== idx) } as SequenceStep);
-    setEditingSubIdx(null);
-  }
-  function subStepTitle(s: SequenceStep): string {
-    return s.title || '(untitled)';
-  }
-
-  function renderField(def: StepFieldDef): React.ReactNode {
+  function renderField(def: StepFieldDef): ReactNode {
     const val = asRecord(step)[def.key];
     const label = typeof def.label === 'function' ? def.label(step) : def.label;
 
@@ -287,7 +263,7 @@ export function StepFieldsForm({
   }
 
   const inlineTypes = new Set(['number', 'select']);
-  const rows: React.ReactNode[] = [];
+  const rows: ReactNode[] = [];
   let rowBuf: StepFieldDef[] = [];
 
   function flushRow() {
@@ -317,56 +293,28 @@ export function StepFieldsForm({
 
       {step.type === 'repeat_group' && (
         <div className="border-t border-gray-100 pt-3">
-          <label className="block text-xs text-gray-500 mb-2">Sub-steps</label>
-          {subSteps.length === 0 && <p className="text-xs text-gray-400 italic mb-2">No sub-steps yet.</p>}
+          <label className="block text-xs text-gray-500 mb-2">Child steps</label>
+          {(childSteps ?? []).length === 0 && (
+            <p className="text-xs text-gray-400 italic mb-2">No child steps yet.</p>
+          )}
           <div className="space-y-1.5 mb-2">
-            {subSteps.map((s, i) => (
-              <div key={s.id} className="border border-gray-200 rounded-lg">
-                <div className="flex items-center gap-1.5 px-2.5 py-1.5">
-                  {stepTypeMeta[s.type].icon(s.position)}
-                  <span className="text-xs text-gray-700 flex-1 truncate">{subStepTitle(s)}</span>
-                  <button
-                    type="button"
-                    onClick={() => setEditingSubIdx(editingSubIdx === i ? null : i)}
-                    className="text-[11px] text-gray-400 hover:text-gray-600"
-                  >{editingSubIdx === i ? 'Done' : 'Edit'}</button>
-                  <button
-                    type="button"
-                    onClick={() => deleteSubStep(i)}
-                    className="text-gray-400 hover:text-red-500 text-sm leading-none"
-                  >&times;</button>
-                </div>
-                {editingSubIdx === i && (
-                  <div className="border-t border-gray-100 p-2.5">
-                    <StepFieldsForm step={s} onChange={(u) => updateSubStep(i, u)} />
-                  </div>
+            {(childSteps ?? []).map((cs) => (
+              <div key={cs.id} className="flex items-center gap-2 border border-gray-200 rounded px-2.5 py-1.5">
+                <span className="text-xs text-gray-700 flex-1 truncate">{cs.title || '(untitled)'}</span>
+                <span className="text-[11px] text-gray-400">{stepTypeMeta[cs.type]?.label}</span>
+                {onEditChildStep && (
+                  <button type="button" onClick={() => onEditChildStep(cs.id)} className="text-[11px] text-blue-500 hover:text-blue-700">Edit</button>
+                )}
+                {onRemoveChildStep && (
+                  <button type="button" onClick={() => onRemoveChildStep(cs.id)} className="text-gray-400 hover:text-red-500 text-sm leading-none">&times;</button>
                 )}
               </div>
             ))}
           </div>
-
-          {!showSubPicker ? (
-            <button
-              type="button"
-              onClick={() => setShowSubPicker(true)}
-              className="text-xs text-blue-500 hover:text-blue-700"
-            >+ Add sub-step</button>
-          ) : (
-            <div className="flex flex-wrap gap-1.5">
-              {(['repetition', 'repeat_group', 'action'] as const).map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => addSubStep(t)}
-                  className="text-[11px] bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200"
-                >{stepTypeMeta[t].icon()} {stepTypeMeta[t].label}</button>
-              ))}
-              <button
-                type="button"
-                onClick={() => setShowSubPicker(false)}
-                className="text-[11px] text-gray-400 hover:text-gray-600"
-              >Cancel</button>
-            </div>
+          {onAddChildStep && (
+            <button type="button" onClick={onAddChildStep} className="text-xs text-blue-500 hover:text-blue-700">
+              + Add child step
+            </button>
           )}
         </div>
       )}

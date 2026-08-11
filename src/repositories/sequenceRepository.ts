@@ -1,6 +1,6 @@
 import { db } from '../lib/firebase';
 import { collection, query, where, orderBy, getDocs, getDoc, doc, addDoc, updateDoc, deleteField } from 'firebase/firestore';
-import type { Sequence, SequenceRun, SequenceStep } from '../types/sequence';
+import type { Sequence, SequenceRun } from '../types/sequence';
 const TIMEOUT_MS = 10_000;
 
 function stripEmptyStrings<T>(obj: T): T {
@@ -11,52 +11,6 @@ function stripEmptyStrings<T>(obj: T): T {
       .filter(([_, v]) => v !== '')
       .map(([k, v]) => [k, typeof v === 'object' && v !== null ? stripEmptyStrings(v) : v])
   ) as T;
-}
-
-function migrateStep(step: Record<string, unknown>): SequenceStep {
-  if (step.type === 'exercise') {
-    return {
-      type: 'repetition', id: step.id as string, position: step.position as number || 1,
-      title: step.exerciseName as string || '', equipment: step.equipmentName as string || '',
-      unit: step.setUnit === 'seconds' ? 'seconds' : 'weight',
-      steps: step.sets as number || 3, reps: step.reps as number || 10,
-      weightLb: step.weight as number || 0, durationSeconds: 0,
-      restBetweenSetsSeconds: (step.restAfterSetMinutes as number || 2) * 60,
-      voiceActivation: false, instructions: step.instructions as string || '', media: step.media as [] || [],
-    } as SequenceStep;
-  }
-  if (step.type === 'stretch') {
-    return {
-      type: 'repetition', id: step.id as string, position: step.position as number || 1,
-      title: step.stretchName as string || '', equipment: step.equipment as string || '',
-      unit: 'seconds', steps: step.sets as number || 3, reps: 1,
-      weightLb: 0, durationSeconds: step.durationSeconds as number || 30,
-      restBetweenSetsSeconds: step.restBetweenSetsSeconds as number || 30,
-      voiceActivation: step.voiceActivation as boolean || false,
-      instructions: step.instructions as string || '', media: step.media as [] || [],
-    } as SequenceStep;
-  }
-  if (step.type === 'timer') {
-    return {
-      type: 'action', id: step.id as string, position: step.position as number || 1,
-      title: step.label as string || '', durationMinutes: step.durationMinutes as number || 10,
-      timerEndBehavior: 'notification', useDuration: true,
-      instructions: step.instructions as string || '', media: step.media as [] || [],
-    } as SequenceStep;
-  }
-  return step as unknown as SequenceStep;
-}
-
-function migrateSequence(data: Record<string, unknown>): Omit<Sequence, 'id'> {
-  return {
-    name: data.name as string || '',
-    description: data.description as string || '',
-    steps: (data.steps as Record<string, unknown>[] || []).map(migrateStep),
-    isDeleted: data.isDeleted as boolean || false,
-    createdAt: data.createdAt as string || '',
-    lastModifiedAt: data.lastModifiedAt as string || '',
-    pendingFirestoreSync: data.pendingFirestoreSync as boolean || false,
-  } as unknown as Omit<Sequence, 'id'>;
 }
 
 function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
@@ -86,7 +40,19 @@ export async function fetchSequences(): Promise<Sequence[]> {
   const snap = await safeGetDocs(q);
   return snap.docs.map((d) => {
     const data = d.data() as Record<string, unknown>;
-    return { id: d.id, ...migrateSequence(data) };
+    return {
+      id: d.id,
+      name: data.name as string || '',
+      description: data.description as string || '',
+      steps: (data.steps as { stepId: string; position: number }[] || []).map((s) => ({
+        stepId: s.stepId,
+        position: s.position,
+      })),
+      isDeleted: data.isDeleted as boolean || false,
+      createdAt: data.createdAt as string || '',
+      lastModifiedAt: data.lastModifiedAt as string || '',
+      pendingFirestoreSync: data.pendingFirestoreSync as boolean || false,
+    };
   });
 }
 
@@ -96,7 +62,19 @@ export async function fetchSequenceById(id: string): Promise<Sequence | null> {
   const snap = await withTimeout(getDoc(ref), TIMEOUT_MS);
   if (!snap.exists()) return null;
   const data = snap.data() as Record<string, unknown>;
-  return { id: snap.id, ...migrateSequence(data) };
+  return {
+    id: snap.id,
+    name: data.name as string || '',
+    description: data.description as string || '',
+    steps: (data.steps as { stepId: string; position: number }[] || []).map((s) => ({
+      stepId: s.stepId,
+      position: s.position,
+    })),
+    isDeleted: data.isDeleted as boolean || false,
+    createdAt: data.createdAt as string || '',
+    lastModifiedAt: data.lastModifiedAt as string || '',
+    pendingFirestoreSync: data.pendingFirestoreSync as boolean || false,
+  };
 }
 
 export async function createSequence(data: Omit<Sequence, 'id'>): Promise<string | null> {
@@ -111,7 +89,6 @@ export async function updateSequence(id: string, data: Partial<Omit<Sequence, 'i
   if (!db) return;
   const ref = doc(db, 'sequences', id);
   const clean = stripEmptyStrings(data);
-  // Explicitly delete top-level string fields that were cleared
   for (const key of ['description'] as const) {
     if (key in data && data[key] === '') {
       (clean as Record<string, unknown>)[key] = deleteField();

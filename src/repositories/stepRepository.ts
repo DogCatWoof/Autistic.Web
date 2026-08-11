@@ -30,6 +30,14 @@ export async function fetchStepById(id: string): Promise<Step | null> {
   return { id: snap.id, ...(snap.data() as Omit<Step, 'id'>) };
 }
 
+export async function fetchStepsByIds(ids: string[]): Promise<Step[]> {
+  if (!db || ids.length === 0) return [];
+  const col = collection(db, 'steps');
+  const q = query(col, where('__name__', 'in', ids));
+  const snap = await withTimeout(getDocs(q), TIMEOUT_MS);
+  return snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Step, 'id'>) }));
+}
+
 export async function createStep(data: Omit<Step, 'id'>): Promise<string | null> {
   if (!db) return null;
   const col = collection(db, 'steps');

@@ -7,7 +7,7 @@
 | Field | Type | Required |
 |---|---|---|
 | `name` | `string` | yes |
-| `steps` | `array<SequenceStep>` | yes |
+| `steps` | `array<StepReference>` | yes |
 | `repeatMode` | `'once' \| 'until_done' \| 'count'` | yes |
 | `repeatCount` | `number` | yes |
 | `isDeleted` | `boolean` | yes |
@@ -15,17 +15,9 @@
 | `lastModifiedAt` | `string` (ISO 8601) | yes |
 | `pendingFirestoreSync` | `boolean` | yes |
 
-**SequenceStep** (discriminated union on `type`):
+**StepReference**: `{ stepId: string, position: number }`
 
-| Step Type | Additional Fields |
-|---|---|
-| `repetition` | `title`, `equipment`, `unit` ('none'\|'weight'\|'seconds'), `steps`, `reps`, `weightLb`, `durationSeconds`, `restBetweenSetsSeconds`, `voiceActivation`, `instructions`, `media[]` |
-| `repeat_group` | `title`, `steps[]` (recursive SequenceStep), `instructions`, `media[]` |
-| `action` | `title`, `durationMinutes`, `timerEndBehavior` ('notification'\|'none'), `useDuration`, `instructions`, `media[]` |
-
-All steps extend `StepBase`: `id` (string), `type` (string), `position` (number), `title` (string, default `''`), `instructions` (string, default `''`), `media` (array, default `[]`).
-
-**MediaAttachment**: `{ url: string, scale: number, x?: number, y?: number }`
+Sequences store only step references — all step details live in the `steps` collection.
 
 **Indexes:**
 - `isDeleted` ASC + `name` ASC → [create](https://console.firebase.google.com/v1/r/project/autistic-8e840/firestore/indexes?create_composite=ClBwcm9qZWN0cy9hdXRpc3RpYy04ZTg0MC9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvc2VxdWVuY2VzL2luZGV4ZXMvXxABGg0KCWlzRGVsZXRlZBABGggKBG5hbWUQARoMCghfX25hbWVfXxAB)
@@ -56,6 +48,10 @@ All steps extend `StepBase`: `id` (string), `type` (string), `position` (number)
 | `usedBy` | `array<string>` | yes |
 | `createdAt` | `string` (ISO 8601) | yes |
 | `lastModifiedAt` | `string` (ISO 8601) | yes |
+
+Steps are standalone documents. Child steps in `repeat_group` steps are stored as `StepReference[]` (by ID, not embedded).
+
+**MediaAttachment**: `{ url: string, scale: number, x?: number, y?: number }`
 
 **Indexes:**
 - `isDeleted` ASC + `title` ASC → [create](https://console.firebase.google.com/v1/r/project/autistic-8e840/firestore/indexes?create_composite=ClBwcm9qZWN0cy9hdXRpc3RpYy04ZTg0MC9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvc3RlcHMvaW5kZXhlcy9fEAEaDQoJaXNEZWxldGVkEAEaCQoFdGl0bGUQARoMCghfX25hbWVfXxAB)

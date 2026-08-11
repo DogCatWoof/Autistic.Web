@@ -1,13 +1,13 @@
-import type { SequenceStep } from '../types/sequence';
+import type { Step } from '../types/step';
 import { StepIcon } from './StepIcons';
 
-const stepTypes: { type: SequenceStep['type']; label: string; desc: string }[] = [
+const stepTypes: { type: Step['type']; label: string; desc: string }[] = [
   { type: 'repetition', label: 'Repetitions', desc: 'Sets, reps, weight or duration, and rest tracking' },
   { type: 'repeat_group', label: 'Repeat Group', desc: 'Nested sub-steps that repeat until done' },
   { type: 'action', label: 'Action', desc: 'Simple task or chore with optional timer' },
 ];
 
-export default function StepTypePicker({ onSelect, onClose }: { onSelect: (type: SequenceStep['type']) => void; onClose: () => void }) {
+export default function StepTypePicker({ onSelect, onClose }: { onSelect: (type: Step['type']) => void; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={onClose} onKeyDown={(e) => { if (e.key === 'Escape') onClose(); }} role="presentation">
       <div className="bg-white rounded-xl shadow-xl p-4 w-80 max-w-full mx-4" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()} role="dialog" aria-label="Add step">

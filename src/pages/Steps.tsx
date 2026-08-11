@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
-import { createStepDoc, type Step, type MediaAttachment } from '../types/step';
-import { stepTypeMeta } from '../components/stepFields';
+import { useState, useEffect, useMemo } from 'react';
+import { createStepDoc, type Step } from '../types/step';
+import { stepTypeMeta, StepFieldsForm } from '../components/stepFields';
 import { StepIcon } from '../components/StepIcons';
-import FileDropInput from '../components/FileDropInput';
 import StepTypePicker from '../components/StepTypePicker';
-import { useSteps, useStep, useCreateStep, useUpdateStep, useDeleteStep } from '../hooks/useSteps';
+import { useSteps, useStep, useStepsByIds, useCreateStep, useUpdateStep, useDeleteStep } from '../hooks/useSteps';
 import { useSequences } from '../hooks/useSequences';
 
 function stepSummary(s: Step): string {
@@ -67,119 +66,19 @@ function StepListView({ onSelect, onNew }: { onSelect: (id: string) => void; onN
   );
 }
 
-function NumField({ label, val, onVal }: { label: string; val: number; onVal: (v: number) => void }) {
-  return (
-    <div className="flex-1 min-w-0">
-      <label className="block text-xs text-gray-500 mb-1">{label}</label>
-      <input type="text" inputMode="numeric" value={val === 0 ? '' : String(val ?? '')}
-        onChange={(e) => { const raw = e.target.value; if (raw === '') { onVal(0); return; } const n = Number(raw); if (!isNaN(n)) onVal(Math.max(0, n)); }}
-        className="border border-gray-200 rounded px-2 py-1 text-sm w-full" />
-    </div>
-  );
-}
 
-function TextField({ label, val, onVal }: { label: string; val: string; onVal: (v: string) => void }) {
-  return (
-    <div className="flex-1 min-w-0">
-      <label className="block text-xs text-gray-500 mb-1">{label}</label>
-      <input type="text" value={val ?? ''} onChange={(e) => onVal(e.target.value)}
-        className="border border-gray-200 rounded px-2 py-1 text-sm w-full" />
-    </div>
-  );
-}
-
-function SelectField({ label, val, options, onVal }: { label: string; val: string; options: [string, string][]; onVal: (v: string) => void }) {
-  return (
-    <div className="flex-1 min-w-0">
-      <label className="block text-xs text-gray-500 mb-1">{label}</label>
-      <select value={String(val ?? '')} onChange={(e) => onVal(e.target.value)}
-        className="border border-gray-200 rounded px-2 py-1 text-sm w-full">
-        {options.map(([value, display]) => <option key={value} value={value}>{display}</option>)}
-      </select>
-    </div>
-  );
-}
-
-function ToggleField({ label, val, onVal }: { label: string; val: boolean; onVal: (v: boolean) => void }) {
-  return (
-    <label className="flex items-center gap-2 w-full">
-      <input type="checkbox" checked={!!val} onChange={(e) => onVal(e.target.checked)} className="rounded" />
-      <span className="text-xs text-gray-500">{label}</span>
-    </label>
-  );
-}
-
-function TextAreaField({ label, val, onVal }: { label: string; val: string; onVal: (v: string) => void }) {
-  return (
-    <div className="w-full">
-      <label className="block text-xs text-gray-500 mb-1">{label}</label>
-      <textarea value={val ?? ''} onChange={(e) => onVal(e.target.value)} rows={3}
-        className="border border-gray-200 rounded px-2 py-1 text-sm w-full resize-y min-h-[60px]" />
-    </div>
-  );
-}
-
-function MediaField({ val, onVal }: { val: MediaAttachment[]; onVal: (v: MediaAttachment[]) => void }) {
-  return (
-    <div className="w-full">
-      <FileDropInput value={val ?? []} onChange={onVal} />
-    </div>
-  );
-}
-
-function StepFields({ step, onChange }: { step: Step; onChange: (s: Step) => void }) {
-  const upd = (key: string, value: unknown) => onChange({ ...step, [key]: value });
-
-  if (step.type === 'repetition') {
-    return (
-      <>
-        <TextField label="Equipment" val={step.equipment} onVal={(v) => upd('equipment', v)} />
-        <div className="flex gap-2">
-          <NumField label="Sets" val={step.steps} onVal={(v) => upd('steps', v)} />
-          <NumField label="Reps" val={step.reps} onVal={(v) => upd('reps', v)} />
-        </div>
-        <SelectField label="Unit" val={step.unit} options={[['none', 'None'], ['weight', 'Weight'], ['seconds', 'Seconds']]} onVal={(v) => upd('unit', v)} />
-        {step.unit === 'weight' && <NumField label="Weight (lb)" val={step.weightLb} onVal={(v) => upd('weightLb', v)} />}
-        {step.unit === 'seconds' && <NumField label="Duration (sec)" val={step.durationSeconds} onVal={(v) => upd('durationSeconds', v)} />}
-        <ToggleField label="Voice activation" val={step.voiceActivation} onVal={(v) => upd('voiceActivation', v)} />
-        <NumField label="Rest (sec)" val={step.restBetweenSetsSeconds} onVal={(v) => upd('restBetweenSetsSeconds', v)} />
-        <TextAreaField label="Instructions" val={step.instructions} onVal={(v) => upd('instructions', v)} />
-        <MediaField val={step.media} onVal={(v) => upd('media', v)} />
-      </>
-    );
-  }
-
-  if (step.type === 'action') {
-    return (
-      <>
-        <ToggleField label="Use duration" val={step.useDuration} onVal={(v) => upd('useDuration', v)} />
-        {step.useDuration && (
-          <>
-            <NumField label="Duration (minutes)" val={step.durationMinutes} onVal={(v) => upd('durationMinutes', v)} />
-            <SelectField label="On complete" val={step.timerEndBehavior} options={[['notification', 'Notification'], ['none', 'None']]} onVal={(v) => upd('timerEndBehavior', v)} />
-          </>
-        )}
-        <TextAreaField label="Instructions" val={step.instructions} onVal={(v) => upd('instructions', v)} />
-        <MediaField val={step.media} onVal={(v) => upd('media', v)} />
-      </>
-    );
-  }
-
-  return (
-    <>
-      <TextAreaField label="Instructions" val={step.instructions} onVal={(v) => upd('instructions', v)} />
-      <MediaField val={step.media} onVal={(v) => upd('media', v)} />
-      <p className="text-xs text-gray-400 italic">Child steps will be managed when connected to sequences.</p>
-    </>
-  );
-}
 
 function StepEditView({ id, onCancel }: { id: string; onCancel: () => void }) {
   const { data: serverStep, isLoading } = useStep(id);
   const { data: sequences = [] } = useSequences();
   const updateStep = useUpdateStep();
   const deleteStep = useDeleteStep();
+  const createStep = useCreateStep();
   const [step, setStep] = useState<Step | null>(null);
+  const [showChildPicker, setShowChildPicker] = useState(false);
+
+  const childStepIds = useMemo(() => (step?.childSteps ?? []).map((r) => r.stepId), [step]);
+  const { data: childStepsData = [] } = useStepsByIds(childStepIds);
 
   useEffect(() => {
     if (serverStep) setStep(serverStep);
@@ -198,6 +97,40 @@ function StepEditView({ id, onCancel }: { id: string; onCancel: () => void }) {
   function handleDelete() {
     if (!window.confirm(`Delete step "${s.title || '(untitled)'}"?`)) return;
     deleteStep.mutate(id, { onSuccess: onCancel });
+  }
+
+  function handleAddChildStep(type: Step['type']) {
+    setShowChildPicker(false);
+    const now = new Date().toISOString();
+    const childDoc = createStepDoc(type);
+    createStep.mutate(childDoc, {
+      onSuccess: (childId) => {
+        if (!childId) return;
+        const maxPos = (step?.childSteps ?? []).reduce((m, r) => Math.max(m, r.position), 0);
+        const updatedStep: Step = {
+          ...step!,
+          childSteps: [...(step?.childSteps ?? []), { stepId: childId, position: maxPos + 1 }],
+          lastModifiedAt: now,
+        };
+        setStep(updatedStep);
+        updateStep.mutate({ id, data: { childSteps: updatedStep.childSteps, lastModifiedAt: now } });
+      },
+    });
+  }
+
+  function handleRemoveChildStep(childStepId: string) {
+    if (!step) return;
+    const childStep = childStepsData.find((cs) => cs.id === childStepId);
+    const label = childStep?.title || '(untitled)';
+    if (!window.confirm(`Remove child step "${label}"?`)) return;
+    const now = new Date().toISOString();
+    const updatedStep: Step = {
+      ...step,
+      childSteps: step.childSteps.filter((r) => r.stepId !== childStepId),
+      lastModifiedAt: now,
+    };
+    setStep(updatedStep);
+    updateStep.mutate({ id, data: { childSteps: updatedStep.childSteps, lastModifiedAt: now } });
   }
 
   return (
@@ -223,8 +156,21 @@ function StepEditView({ id, onCancel }: { id: string; onCancel: () => void }) {
         className="text-xl font-semibold border-b-2 border-transparent focus:border-blue-400 outline-none w-full pb-0.5 mb-4" />
 
       <div className="space-y-3">
-        <StepFields step={step} onChange={setStep} />
+        <StepFieldsForm
+          step={step}
+          onChange={setStep}
+          onAddChildStep={step.type === 'repeat_group' ? () => setShowChildPicker(true) : undefined}
+          onRemoveChildStep={handleRemoveChildStep}
+          childSteps={childStepsData}
+        />
       </div>
+
+      {showChildPicker && (
+        <StepTypePicker
+          onSelect={(type) => handleAddChildStep(type)}
+          onClose={() => setShowChildPicker(false)}
+        />
+      )}
 
       <div className="mt-8 pt-4 border-t border-gray-200">
         <h3 className="text-sm font-medium text-gray-700 mb-2">Used by</h3>

@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchSteps, fetchStepById, createStep, updateStep, deleteStep } from '../repositories/stepRepository';
+import { fetchSteps, fetchStepById, fetchStepsByIds, createStep, updateStep, deleteStep } from '../repositories/stepRepository';
 import type { Step } from '../types/step';
 
 export function useSteps() {
@@ -16,6 +16,16 @@ export function useStep(id: string | undefined) {
     queryKey: ['step', id],
     queryFn: () => fetchStepById(id!),
     enabled: !!id,
+  });
+}
+
+export function useStepsByIds(ids: string[]) {
+  return useQuery({
+    queryKey: ['steps', 'byIds', ids],
+    queryFn: () => fetchStepsByIds(ids),
+    enabled: ids.length > 0,
+    retry: false,
+    gcTime: 0,
   });
 }
 

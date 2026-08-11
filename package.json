@@ -12,7 +12,8 @@
     "format": "prettier --write src",
     "test": "vitest",
     "test:run": "vitest run",
-    "migrate:firestore": "npx tsx scripts/migrateFirestore.ts"
+    "migrate:firestore": "npx tsx scripts/migrateFirestore.ts",
+    "migrate:normalize": "npx tsx scripts/normalizeSequences.ts"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.4",

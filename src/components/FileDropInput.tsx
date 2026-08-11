@@ -3,7 +3,7 @@ import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, type D
 import { SortableContext, useSortable, verticalListSortingStrategy, arrayMove } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useGooglePicker } from '../lib/useGooglePicker';
-import type { MediaAttachment } from '../types/sequence';
+import type { MediaAttachment } from '../types/step';
 
 function readFileAsDataURL(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
